@@ -1,0 +1,268 @@
+/* 1. Theme Configuration */
+:root {
+    --bg-color: #f9fafb;
+    --surface-color: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --border-color: #e5e7eb;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03);
+    --transition-speed: 0.25s;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f0f11;
+    --surface-color: #18181b;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --accent-color: #60a5fa;
+    --accent-hover: #3b82f6;
+    --border-color: #27272a;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Global Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", -apple-system, system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Navbar Styling */
+.navbar {
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.time-display {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-color);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-family: monospace;
+}
+
+.nav-links ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#toggle-theme {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    margin-left: 1rem;
+}
+
+/* 4. Main Container & Hero */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 3rem 2rem; /* Reduced top padding to move content up */
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.hero-section h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* 5. Expanded Upload Area */
+.converter-box {
+    width: 100%;
+    background-color: var(--surface-color);
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    padding: 6rem 2rem; /* Massive vertical padding */
+    text-align: center;
+    transition: all var(--transition-speed);
+    margin-bottom: 3rem;
+}
+
+.converter-box:hover {
+    border-color: var(--accent-color);
+    background-color: var(--accent-hover);
+    background-opacity: 0.05;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    gap: 1rem;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+/* 6. The File Card Layout */
+#selected-files {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.file-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* Stack Header then Preview */
+    width: 100%;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+/* The Top Row (Info & Actions) */
+.file-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.file-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.file-size {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+}
+
+.copy-btn {
+    padding: 0.4rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-btn.success {
+    background-color: #10b981;
+}
+
+/* The Bottom Area (Content Preview) */
+.preview-window {
+    width: 100%;
+    height: 300px; /* Fixed height for the preview area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: var(--surface-color);
+}
+
+.preview-window img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.preview-window pre, 
+.preview-window embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.placeholder-text {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}

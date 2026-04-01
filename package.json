@@ -1,0 +1,19 @@
+{
+  "name": "base64.all",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "eyetheekh",
+  "license": "",
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^8.0.2"
+  }
+}
